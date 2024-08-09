@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Restaurant Search</title>
+</head>
+<body>
+    <h1>Search for a Dish</h1>
+    <form method="get" action="{% url 'search' %}">
+        <input type="text" name="q" value="{{ query }}">
+        <button type="submit">Search</button>
+    </form>
+    <h2>Results</h2>
+    <ul>
+        {% for restaurant in results %}
+            <li>{{ restaurant.name }} - {{ restaurant.dish }} (Rating: {{ restaurant.rating }})</li>
+        {% empty %}
+            <li>No results found</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
